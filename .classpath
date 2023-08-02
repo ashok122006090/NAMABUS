@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry excluding="sprinboot/namabus/exception/" kind="src" path="namabus/src/main/java"/>
+	<classpathentry kind="src" path="namabus/src/main/java/sprinboot/namabus/exception"/>
+	<classpathentry kind="src" path="namabus/src/test/java"/>
+	<classpathentry kind="lib" path="namabus/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
