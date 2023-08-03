@@ -29,32 +29,32 @@ public class BusController {
 	public Bus getBusById(@PathVariable int id) {
 		return this.busService.getBusById(id);}
 
-	@GetMapping ("/buses")
+	@GetMapping ("/buses")//
 
 	public ResponseEntity<Bus> getBuses(){
 
 	List<Bus> BusImpl =busService.getBuses();
 	return new ResponseEntity (BusImpl, HttpStatus.OK) ;}
 		
-//	@PostMapping("/buses")
-//
-//	public ResponseEntity<Bus> addBuses (@RequestBody Bus busDAO) {
-//		Bus busImpl =busService.addBuses(busDAO) (busDAO);
-//
-//	return new ResponseEntity(busImpl, HttpStatus. CREATED);}
+	@PostMapping("/bus")
+
+	public ResponseEntity<Bus> addBuses (@RequestBody Bus busDAO) {
+		Bus busImpl =busService.addBuses(busDAO);
+
+	return new ResponseEntity(busImpl, HttpStatus. CREATED);}
 
 
-//	@PutMapping("/buses")
+	@PutMapping("/buses")
+
+	public ResponseEntity<Bus> updateBuses (@RequestBody Bus bus){
+		Bus busImpl = busService.updateBuses (bus);
+		return new ResponseEntity (busImpl,HttpStatus.ACCEPTED); }
+
 //
-//	public ResponseEntity<Bus> updateBuses (@RequestBody Bus bus){
-//		Bus busImpl = busService.updateBuses (bus);
-//		return new ResponseEntity (busImpl,HttpStatus.ACCEPTED); }
-//
-//
-//	@DeleteMapping ("/buses/(bus_Id)")
-//	public void deletePatientById(@PathVariable int bus_Id) {
-//		 this.busService.deleteBusById (bus_Id);
-//	}
+	@DeleteMapping ("/buses/{bus_Id}")
+	public void deletebusById(@PathVariable int bus_Id) {
+		 this.busService.deleteBusById(bus_Id);
+	}
 
 	
 

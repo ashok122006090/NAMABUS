@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import sprinboot.namabus.exception.BusNotFoundException;
 //import sprinboot.namabus.exception.BusNotFoundException;
 import springboot.namabus.dao.BusDAO;
 import springboot.namabus.entities.Bus;
@@ -33,6 +34,37 @@ public class BusServiceImpl implements BusService{
    public Bus getBusById(int Bus_id) {
 	   return null;
    }
+
+
+@Override
+public Bus updateBuses(Bus bus) {
+  busDAO.save(bus);
+	return bus;
+}
+
+
+@Override
+public String deleteBusById(int bus_Id) throws BusNotFoundException {
+	Optional<Bus> bus = busDAO.findById(bus_Id);
+	String messsage =null;
+	if(bus.isPresent()) {
+		busDAO.deleteById(bus_Id);
+		messsage = new String("bus deleted succssfully");
+	}
+	else {
+		throw new BusNotFoundException("no such Bus");
+	}
+	// TODO Auto-generated method stub
+	return messsage;
+}
+
+
+//@Override
+//public String deleteBusById(int bus_Id) {
+//	// TODO Auto-generated method stub
+//	busDAO.deleteById(bus_Id);
+//	return "bus deleted";
+//}
 
 //	@Override
 //
