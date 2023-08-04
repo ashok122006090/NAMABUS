@@ -2,109 +2,107 @@ package springboot.namabus.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Data;
 
 @Entity
 
 
+//string route from to 
+// class route ,
+// booking      id,bus no, route, .... start time , end time , reservation id , Enum,type,
 
 @Table(name = "Bus")
+@Data
 public class Bus {
 
+
+	//BusType status = Bustype.; 
     @Id
 
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private int id;
 
     @Column(name = "price")
 
-     int price;
+    private int price;
 
     @Column(name = "seats")
 
-     int seats;
+    private int seats;
 
-    @Column(name = "amenities")
-
-     String amenities;
-
- 
-
-    public Bus() {
-
-        super();
-
-    }
-
-
-
-	public int getId() {
-		return id;
-	}
-
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-
-	public int getPrice() {
-		return price;
-	}
-
-
-
-	public void setPrice(int price) {
-		this.price = price;
-	}
-
-
-
-	public int getSeats() {
-		return seats;
-	}
-
-
-
-	public void setSeats(int seats) {
-		this.seats = seats;
-	}
-
-
-
-	public String getAmenities() {
-		return amenities;
-	}
-
-
-
-	public void setAmenities(String amenities) {
-		this.amenities = amenities;
-	}
-
-
-
-	public Bus(int id, int price, int seats, String amenities) {
-		super();
-		this.id = id;
-		this.price = price;
-		this.seats = seats;
-		this.amenities = amenities;
-	}
-
-
-
-	@Override
-	public String toString() {
-		return "Bus [id=" + id + ", price=" + price + ", seats=" + seats + ", amenities=" + amenities + "]";
-	}
-
+//    @Column(name = "amenities")
+//
+//     String amenities;
+    @Column(name = "BusType") 
+@Enumerated(EnumType.STRING)
+ private BusType BusTypes;
+@Column(name = "StartPoint")
+private String startpoint;
+@Column(name = "EndPoint")
+private String endpoint;
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
+}
+public int getPrice() {
+	return price;
+}
+public void setPrice(int price) {
+	this.price = price;
+}
+public int getSeats() {
+	return seats;
+}
+public void setSeats(int seats) {
+	this.seats = seats;
+}
+public BusType getBusTypes() {
+	return BusTypes;
+}
+public void setBusTypes(BusType busTypes) {
+	BusTypes = busTypes;
+}
+public String getStartpoint() {
+	return startpoint;
+}
+public void setStartpoint(String startpoint) {
+	this.startpoint = startpoint;
+}
+public String getEndpoint() {
+	return endpoint;
+}
+public void setEndpoint(String endpoint) {
+	this.endpoint = endpoint;
+}
+public Bus(int id, int price, int seats, BusType busTypes, String startpoint, String endpoint) {
+	super();
+	this.id = id;
+	this.price = price;
+	this.seats = seats;
+	BusTypes = busTypes;
+	this.startpoint = startpoint;
+	this.endpoint = endpoint;
+}
+@Override
+public String toString() {
+	return "Bus [id=" + id + ", price=" + price + ", seats=" + seats + ", BusTypes=" + BusTypes + ", startpoint="
+			+ startpoint + ", endpoint=" + endpoint + ", getId()=" + getId() + ", getPrice()=" + getPrice()
+			+ ", getSeats()=" + getSeats() + ", getBusTypes()=" + getBusTypes() + ", getStartpoint()=" + getStartpoint()
+			+ ", getEndpoint()=" + getEndpoint() + "]";
+}
+public Bus() {
+	super();
+	// TODO Auto-generated constructor stub
+}
 
 
 

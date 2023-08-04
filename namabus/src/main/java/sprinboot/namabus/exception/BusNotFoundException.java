@@ -1,15 +1,15 @@
 package sprinboot.namabus.exception;
 
 public class BusNotFoundException extends RuntimeException{
-	private String message;
+	private String message1;
 
 	private static final long serialVersionUID = 1L;
 
-	public BusNotFoundException (String message) {
+	public BusNotFoundException (String message1) {
 
 	super();
 
-	this.message=message;}
+	this.message1=message1;}
 	public BusNotFoundException() {
 		
 	}
