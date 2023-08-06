@@ -1,4 +1,4 @@
-package sprinboot.namabus.exception;
+package springboot.namabus.exception;
 
 public class BusNotFoundException extends RuntimeException{
 	private String message1;

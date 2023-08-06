@@ -6,10 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import sprinboot.namabus.exception.BusNotFoundException;
 //import sprinboot.namabus.exception.BusNotFoundException;
 import springboot.namabus.dao.BusDAO;
 import springboot.namabus.entities.Bus;
+import springboot.namabus.exception.BusNotFoundException;
 @Service
 public class BusServiceImpl implements BusService{
 	@Autowired 

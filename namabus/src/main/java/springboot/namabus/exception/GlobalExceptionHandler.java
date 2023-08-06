@@ -1,4 +1,4 @@
-package sprinboot.namabus.exception;
+package springboot.namabus.exception;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
