@@ -1,6 +1,7 @@
 package springboot.namabus.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -13,7 +14,7 @@ public interface BusService {
 	public Bus updateBuses(Bus bus);
 public String deleteBusById(int bus_Id);
 	//public Bus getBusById(int bus_id);
-	Bus getBusById(int Bus_id);
+	Optional<Bus> getBusById(int Bus_id);
 	
 	
 	

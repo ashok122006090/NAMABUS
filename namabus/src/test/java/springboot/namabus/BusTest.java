@@ -36,7 +36,7 @@ private BusService busService;
 
 public void getAllBusesTest() {
 
-((Stream<Bus>) when (busDAO.findAll()).thenReturn((List<Bus>) Stream.of( new Bus (123, 3, 6,null, "ac", null)))).collect
+((Stream<Bus>) when (busDAO.findAll()).thenReturn((List<Bus>) Stream.of( new Bus (3, 270, 38,null, "kurnool", "kadap")))).collect
 
 (Collectors.toList());
 

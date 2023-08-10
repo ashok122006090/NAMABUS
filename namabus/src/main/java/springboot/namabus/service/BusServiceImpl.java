@@ -31,8 +31,8 @@ public class BusServiceImpl implements BusService{
 
 	}
    @Override
-   public Bus getBusById(int Bus_id) {
-	   return null;
+   public Optional<Bus> getBusById(int Bus_id) {
+	   return busDAO.findById(Bus_id);
    }
 
 

@@ -2,7 +2,10 @@ package springboot.namabus.controller;
 
 
 import java.util.List;
+import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,21 +30,29 @@ import springboot.namabus.service.BusService;
 @RestController
 //@ApiOperation(value = "")
 @CrossOrigin
-//@RequestMapping("/api")
+@RequestMapping("/api")
 //@ApiOperation(value = "Get a simple greeting", notes = "This endpoint returns a simple greeting message.")
 public class BusController {
 	@Autowired
 	
 	private BusService busService;
+	private static final Logger logger = LoggerFactory.getLogger(BusController.class);
 
 
 	@GetMapping ("/buses/{id}")
-	public Bus getBusById(@PathVariable int id) {
+	public Optional<Bus> getBusById(@PathVariable int id) {
+		  logger.debug("Debug message");
+	        logger.info("Info message");
+	        logger.warn("Warning message");
 		return this.busService.getBusById(id);}
 
 	@GetMapping ("/buses")//
 
 	public ResponseEntity<Bus> getBuses(){
+		  logger.debug("Debug message");
+	        logger.info("Info message");
+	        logger.warn("Warning message");
+	        logger.error("Error message");
 
 	List<Bus> BusImpl =busService.getBuses();
 	return new ResponseEntity (BusImpl, HttpStatus.OK) ;}

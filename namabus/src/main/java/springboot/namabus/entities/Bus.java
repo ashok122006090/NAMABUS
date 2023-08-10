@@ -8,6 +8,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
 @Entity
@@ -28,13 +31,15 @@ public class Bus {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     private int id;
+    
 
     @Column(name = "price")
 
     private int price;
-
+    @Min(value=18, message="must be equal or greater than 18")  
+    @Max(value=45, message="must be equal or less than 45") 
     @Column(name = "seats")
-
+   
     private int seats;
 
 //    @Column(name = "amenities")
@@ -42,6 +47,7 @@ public class Bus {
 //     String amenities;
     @Column(name = "BusType") 
 @Enumerated(EnumType.STRING)
+    @NotBlank(message = "Bus Type mandatory")
  private BusType BusTypes;
 @Column(name = "StartPoint")
 private String startpoint;
