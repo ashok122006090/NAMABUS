@@ -3,61 +3,114 @@ package springboot.namabus.controller;
  
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import springboot.namabus.dao.BookingRepo;
 import springboot.namabus.entities.Booking;
 import springboot.namabus.entities.Payment;
-import springboot.namabus.service.BookingService;
+import springboot.namabus.exception.BookingNotFoundException;
+import springboot.namabus.service.BookingServiceImpl;
 
  
 
 
  
-
+@CrossOrigin
 @RestController
+@RequestMapping("/busbookings")								
 public class BookingController {
-    @Autowired
-    BookingService bookingService;
-    @Autowired
-    BookingRepo dto;
+	private BookingServiceImpl bookingService;
 
- 
+	 
 
-    public BookingService getBookingService() {
-        return bookingService;
-    }
+	@Autowired
 
- 
+	public BookingController(BookingServiceImpl bookingService) {
 
-    public void setBookingService(BookingService bookingService) {
-        this.bookingService = bookingService;
-    }
+	this.bookingService = bookingService;
 
- 
+	}
 
-    @PostMapping("/addBookings/{bookingId}")
+	 
 
- 
+	@GetMapping("/bookings")
 
-    public Booking addPaymentToBooking(@PathVariable int bookingId, @RequestBody Payment payment) {
+	public ResponseEntity<Iterable<Booking>> getAllBookings() {
 
- 
+	Iterable<Booking> bookings = bookingService.getAllBookings();
 
-        Booking booking = bookingService.addPaymentToBooking(bookingId, payment);
-        return booking;
-    }
+	return ResponseEntity.ok(bookings);
 
- 
+	}
 
-    @PostMapping("/Booking")
-    public Booking createBooking(@RequestBody Booking booking) {
-        return bookingService.createBooking(booking);
-    }
+	 
 
- 
+	@GetMapping("/bookings{bookingId}")
 
-}
+	//@ExceptionHandler(BookingNotFoundException.class)
+
+	public ResponseEntity<Booking> getBookingById(@PathVariable int bookingId) throws BookingNotFoundException{
+
+	Booking booking = bookingService.getBookingById(bookingId);
+
+	return ResponseEntity.ok(booking);
+
+	}
+
+	 
+
+	@PostMapping("/bookings")
+
+	public ResponseEntity<String> addBooking(@RequestBody Booking booking) {
+
+	bookingService.addBooking(booking);
+
+	return ResponseEntity.status(HttpStatus.CREATED).body("BOOKING SUCCESSFUL.");
+
+	}
+
+	 
+
+	@PutMapping("/bookings{bookingId}")
+
+	//@ExceptionHandler(BookingNotFoundException.class)
+
+	public ResponseEntity<String> UpdateBookingStatus(@jakarta.validation.Valid @PathVariable("bookingId") int id,@RequestBody Booking booking) throws BookingNotFoundException {
+
+	return new ResponseEntity<String> (bookingService.UpdateBookingStatus(id,booking),HttpStatus.OK);
+
+	}
+
+	 
+
+	@DeleteMapping("/bookings{bookingId}")
+
+	//@ExceptionHandler(BookingNotFoundException.class)
+
+	public ResponseEntity<String> deleteBookingById(@PathVariable int bookingId) throws BookingNotFoundException {
+
+	try {
+
+	bookingService.deleteBookingById(bookingId);
+
+	return ResponseEntity.ok("Booking deleted successfully");
+
+	}
+
+	catch(BookingNotFoundException ex) {
+
+	return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+
+	}
+
+}}

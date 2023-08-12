@@ -11,7 +11,7 @@ import springboot.namabus.entities.Booking;
 
  
 
-@Repository("dto")
+@Repository()
 public interface BookingRepo extends JpaRepository<Booking, Integer> {
 
  

@@ -1,61 +1,36 @@
 package springboot.namabus.service;
 
- 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import springboot.namabus.dao.BookingRepo;
 import springboot.namabus.entities.Booking;
-import springboot.namabus.entities.Payment;
+import springboot.namabus.exception.BookingNotFoundException;
+
+@Service
+
+public interface BookingService {
 
  
 
-
-
- 
-
-@Service("bookingService")
-public class BookingService {
-    @Autowired
-    BookingRepo dto;
+void addBooking(Booking booking);
 
  
 
-    public BookingRepo getDto() {
-        return dto;
-    }
+String UpdateBookingStatus(int bookingId, Booking booking) throws BookingNotFoundException;
 
  
 
-    public void setDto(BookingRepo dto) {
-        this.dto = dto;
-    }
+Booking getBookingById(int bookingId) throws BookingNotFoundException;
 
  
 
-    public Booking addPaymentToBooking(int bookingId, Payment payment) {
-        Booking booking = dto.findById(bookingId).orElse(null);
+Booking deleteBookingById(int bookingId) throws BookingNotFoundException;
 
  
 
-        if (booking != null) {
+Iterable<Booking> getAllBookings();
 
  
 
-            dto.save(booking);
-        } else {
-
- 
-
-            return null;
-        }
-        return booking;
-    }
-
- 
-
-    public Booking createBooking(Booking booking) {
-        return dto.save(booking);
-    }
 }
+
+ 

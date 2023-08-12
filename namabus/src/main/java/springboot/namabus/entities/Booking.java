@@ -3,14 +3,16 @@ package springboot.namabus.entities;
  
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
- 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.CascadeType;
-
- 
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -19,133 +21,166 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
  
 
 @Entity
 @Table(name = "bookings")
 public class Booking {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int bookingId;
+  
+	@Id
 
- 
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
-    private LocalDateTime bookingDate;
-    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
-    private Payment payment;
+	private int bookingId;
 
- 
+	@NotNull(message = " Enter BoardingPoint")
 
-    private int seatNumber;
+	@NotBlank
 
- 
+	private String boardingPoint;
 
-    @Enumerated(EnumType.STRING)
+	@NotNull(message = " Enter droppingPoint")
 
- 
+	@NotBlank
 
-    private BookingStatus Bookingstatus;
+	private String droppingPoint;
 
- 
+	@JsonFormat(pattern = "yyyy-MM-dd")
 
-    @Enumerated(EnumType.STRING)
+	private LocalDate journeyDate;
 
- 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.TIME)
 
-    private PaymentStatus PaymentStatus;
+	private LocalTime startTime;
 
- 
+	@Min(1)
 
-    public PaymentStatus getPaymentStatus() {
-        return PaymentStatus;
-    }
+	@Max(35)
 
- 
+	private int seatNum;
 
-    public void setPaymentStatus(PaymentStatus paymentstatus) {
-    PaymentStatus = paymentstatus;
-    }
+	 
 
- 
+	private int amount;
 
-    private BigDecimal TotalAmount;
+	@GeneratedValue(strategy = GenerationType.AUTO)
 
- 
+	private long ticketNum;
 
-    public BigDecimal getTotalAmount() {
-        return TotalAmount;
-    }
+	@Column
 
- 
+	@Enumerated(EnumType.STRING)
 
-    public void setTotalAmount(BigDecimal totalAmount) {
-        TotalAmount = totalAmount;
-    }
+	private BookingStatus status;
 
- 
+	public int getBookingId() {
+		return bookingId;
+	}
 
-    public Booking() {
-    }
+	public void setBookingId(int bookingId) {
+		this.bookingId = bookingId;
+	}
 
- 
+	public String getBoardingPoint() {
+		return boardingPoint;
+	}
 
-    public Booking(int bookingId, LocalDateTime bookingDate, int seatNumber, BookingStatus bookingstatus) {
-        super();
-        this.bookingId = bookingId;
-        this.bookingDate = bookingDate;
-        this.seatNumber = seatNumber;
-        this.Bookingstatus = bookingstatus;
-    }
+	public void setBoardingPoint(String boardingPoint) {
+		this.boardingPoint = boardingPoint;
+	}
 
- 
+	public String getDroppingPoint() {
+		return droppingPoint;
+	}
 
-    public int getBookingId() {
-        return bookingId;
-    }
+	public void setDroppingPoint(String droppingPoint) {
+		this.droppingPoint = droppingPoint;
+	}
 
- 
+	public LocalDate getJourneyDate() {
+		return journeyDate;
+	}
 
-    public void setBookingId(int bookingId) {
-        this.bookingId = bookingId;
-    }
+	public void setJourneyDate(LocalDate journeyDate) {
+		this.journeyDate = journeyDate;
+	}
 
- 
+	public LocalTime getStartTime() {
+		return startTime;
+	}
 
-    public LocalDateTime getBookingDate() {
-        return bookingDate;
-    }
+	public void setStartTime(LocalTime startTime) {
+		this.startTime = startTime;
+	}
 
- 
+	public int getSeatNum() {
+		return seatNum;
+	}
 
-    public void setBookingDate(LocalDateTime bookingDate) {
-        this.bookingDate = bookingDate;
-    }
+	public void setSeatNum(int seatNum) {
+		this.seatNum = seatNum;
+	}
 
- 
+	public int getAmount() {
+		return amount;
+	}
 
-    public int getSeatNumber() {
-        return seatNumber;
-    }
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 
- 
+	public long getTicketNum() {
+		return ticketNum;
+	}
 
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
+	public void setTicketNum(long ticketNum) {
+		this.ticketNum = ticketNum;
+	}
 
- 
+	public BookingStatus getStatus() {
+		return status;
+	}
 
-    public BookingStatus getBookingstatus() {
-        return Bookingstatus;
-    }
+	public void setStatus(BookingStatus status) {
+		this.status = status;
+	}
 
- 
+	@Override
+	public String toString() {
+		return "Booking [bookingId=" + bookingId + ", boardingPoint=" + boardingPoint + ", droppingPoint="
+				+ droppingPoint + ", journeyDate=" + journeyDate + ", startTime=" + startTime + ", seatNum=" + seatNum
+				+ ", amount=" + amount + ", ticketNum=" + ticketNum + ", status=" + status + ", getBookingId()="
+				+ getBookingId() + ", getBoardingPoint()=" + getBoardingPoint() + ", getDroppingPoint()="
+				+ getDroppingPoint() + ", getJourneyDate()=" + getJourneyDate() + ", getStartTime()=" + getStartTime()
+				+ ", getSeatNum()=" + getSeatNum() + ", getAmount()=" + getAmount() + ", getTicketNum()="
+				+ getTicketNum() + ", getStatus()=" + getStatus() + "]";
+	}
 
-    public void setBookingstatus(BookingStatus bookingstatus) {
-        Bookingstatus = bookingstatus;
-    }
+	public Booking(int bookingId, @NotNull(message = " Enter BoardingPoint") @NotBlank String boardingPoint,
+			@NotNull(message = " Enter droppingPoint") @NotBlank String droppingPoint, LocalDate journeyDate,
+			LocalTime startTime, @Min(1) @Max(35) int seatNum, int amount, long ticketNum, BookingStatus status) {
+		super();
+		this.bookingId = bookingId;
+		this.boardingPoint = boardingPoint;
+		this.droppingPoint = droppingPoint;
+		this.journeyDate = journeyDate;
+		this.startTime = startTime;
+		this.seatNum = seatNum;
+		this.amount = amount;
+		this.ticketNum = ticketNum;
+		this.status = status;
+	}
 
- 
+	public Booking() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
+	
+	
 }
