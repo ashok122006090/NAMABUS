@@ -30,7 +30,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class namabus {
 
 	public static void main(String[] args) {
-		SpringApplication.run(namabus.class, args);
+		SpringApplication.run(namabus.class, args)
 		System.out.println("succesfull");
 //		  try{
 //	           Class.forName("springboot.namabus.namabus");
