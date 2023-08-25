@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.busnama.dto.UserDTO;
+import springboot.namabus.dto.UserDTO;
 import springboot.namabus.service.AdminService;
 
 @RestController
 
 @RequestMapping("/api/admin")
 
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class AdminController {
 

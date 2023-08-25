@@ -2,17 +2,15 @@ package springboot.namabus.exception;
 
 public class FeedbackNotFoundException extends RuntimeException {
 
-private String message1;
-
-public FeedbackNotFoundException (String message1) {
-
- 
-
-    super();
+/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+public FeedbackNotFoundException (String message2) {
 
  
 
-    this.message1=message1;}
+    super();}
 
     public FeedbackNotFoundException() {
 

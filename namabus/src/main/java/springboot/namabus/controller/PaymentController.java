@@ -47,7 +47,7 @@ import springboot.namabus.service.PaymentService;
 
 @RestController
 
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 
 @RequestMapping("/api")
 

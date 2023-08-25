@@ -2,7 +2,7 @@ package springboot.namabus.service;
 
 import java.util.List;
 
-import springboot.busnama.dto.UserDTO;
+import springboot.namabus.dto.UserDTO;
 
 public interface AdminService {
 

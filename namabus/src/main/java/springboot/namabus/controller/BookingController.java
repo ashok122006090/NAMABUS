@@ -25,7 +25,7 @@ import springboot.namabus.service.BookingServiceImpl;
 
 
  
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/busbookings")								
 public class BookingController {

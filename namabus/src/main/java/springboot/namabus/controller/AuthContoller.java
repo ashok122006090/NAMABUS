@@ -64,7 +64,7 @@ import springboot.namabus.service.UserService;
 
 @RequestMapping("/auth")
 
-@CrossOrigin(origins="*")
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class AuthContoller {
 

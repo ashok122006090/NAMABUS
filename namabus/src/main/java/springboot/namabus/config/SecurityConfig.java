@@ -42,7 +42,7 @@ public class SecurityConfig {
 
         http.csrf(csrf-> csrf.disable())
              .cors(cors->cors.disable())
-             .authorizeHttpRequests(auth->auth.requestMatchers("/auth/**").permitAll().requestMatchers("/api/admin/**").hasAuthority(UserRoles.ADMIN.authority()).anyRequest().authenticated())
+             .authorizeHttpRequests(auth->auth.requestMatchers("/auth/**","/api/admin/**","/api/**","/busbookings/**").permitAll())
                      .exceptionHandling(ex->ex.authenticationEntryPoint(point))
                      .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 

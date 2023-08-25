@@ -9,6 +9,11 @@ package springboot.namabus.exception;
 
 	 
 
+	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 	public BookingNotFoundException(String str) {
 
 	super(str);

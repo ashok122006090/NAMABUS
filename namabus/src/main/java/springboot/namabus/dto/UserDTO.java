@@ -1,4 +1,4 @@
-package springboot.busnama.dto;
+package springboot.namabus.dto;
 
 import java.util.Set;
 

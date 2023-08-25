@@ -6,9 +6,9 @@ public class UsernameExistsException extends RuntimeException {
 
  
 
-    public UsernameExistsException(String message) {
+    public UsernameExistsException(String message3) {
 
-        super(message);
+        super(message3);
 
     }
 

@@ -15,7 +15,6 @@ import springboot.namabus.entities.Booking;
 import springboot.namabus.entities.Payment;
 import springboot.namabus.entities.PaymentStatus;
 import springboot.namabus.exception.BookingNotFoundException;
-import springboot.namabus.exception.PaymentIdNotFoundException;
 
  
 
@@ -57,7 +56,7 @@ public class PaymentServiceImpl implements PaymentService {
 
  
 
-            boolean paymentSuccessful = processPayment(booking.getTotalAmount());
+            boolean paymentSuccessful = processPayment(booking.getAmount());
 
  
 
@@ -81,7 +80,7 @@ public class PaymentServiceImpl implements PaymentService {
 
  
 
-    private boolean processPayment(BigDecimal totalAmount) {
+    private boolean processPayment(int amount) {
 
  
 
@@ -97,7 +96,7 @@ public class PaymentServiceImpl implements PaymentService {
             return op.get();
         } else
             // return null;
-            throw new PaymentIdNotFoundException("Payment Id not found");
+            throw new BookingNotFoundException("Payment Id not found");
 
  
 
@@ -111,6 +110,8 @@ public class PaymentServiceImpl implements PaymentService {
     }
 
 
+
+	
 	
 
 

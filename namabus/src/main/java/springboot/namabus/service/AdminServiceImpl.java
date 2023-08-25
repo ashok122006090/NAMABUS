@@ -19,8 +19,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import springboot.busnama.dto.UserDTO;
 import springboot.namabus.dao.UserRepository;
+import springboot.namabus.dto.UserDTO;
 import springboot.namabus.entities.UserEntity;
 
  

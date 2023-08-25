@@ -77,6 +77,16 @@ public class Booking {
 	@Enumerated(EnumType.STRING)
 
 	private BookingStatus status;
+	private PaymentStatus PaymentStatus;
+	
+
+	public PaymentStatus getPaymentStatus() {
+		return PaymentStatus;
+	}
+
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
+		PaymentStatus = paymentStatus;
+	}
 
 	public int getBookingId() {
 		return bookingId;

@@ -27,7 +27,7 @@ import springboot.namabus.service.FeedbackService;
 	 
 
 	@RestController
-	@CrossOrigin
+	@CrossOrigin(origins = "http://localhost:4200")
 	@RequestMapping("/api")
 	public class FeedbackController  {
 	    @Autowired

@@ -29,7 +29,7 @@ import springboot.namabus.service.BusService;
 //@Api
 @RestController
 //@ApiOperation(value = "")
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api")
 //@ApiOperation(value = "Get a simple greeting", notes = "This endpoint returns a simple greeting message.")
 public class BusController {

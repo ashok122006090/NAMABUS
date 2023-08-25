@@ -4,6 +4,7 @@ package springboot.namabus.entities;
 
 import java.util.Set;
 
+
  
 
 
@@ -16,7 +17,7 @@ import lombok.*;
 
 @Setter
 
-@AllArgsConstructor
+
 
 @Builder
 
